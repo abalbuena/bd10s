@@ -1,0 +1,15 @@
+
+F_TIMBRADO
+
+* NRO_TIMBRADO NUMBER (12)    |   floor((p+1)/2) | 12+1/2  |    6   
+* FEC_AUTORIZACION DATE       |   date tiene 7   |      7  |    7 
+* VALIDO_HASTA DATE           |   date tiene 7   |      7  |    7
+* ESTABLECIMIENTO NUMBER (3)  |   floor((p+1)/2) |  3+1/2  |    2
+* EMISION NUMBER (3)          |   floor((p+1)/2) |  3+1/2  |    2
+* NRO_DESDE NUMBER (7)        |   floor((p+1)/2) |  7+1/2  |    4
+* NRO_HASTA NUMBER (7)        |   floor((p+1)/2) |  771/2  |    4
+* ULT_NUM_UTILIZADA NUMBER    |   floor((p+1)/2) |  9+1/2  |    4
+* NUM_COCHE NUMBER (8)        |   floor((p+1)/2) |  8+1/2  |    4
+  ROWID---------------------------------------------------------6
+  TOTAL------------------------------------------------------- 46
+  
