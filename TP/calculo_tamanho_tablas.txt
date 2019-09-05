@@ -12,4 +12,27 @@ F_TIMBRADO
 * NUM_COCHE NUMBER (8)        |   floor((p+1)/2) |  8+1/2  |    4
   ROWID---------------------------------------------------------6
   TOTAL------------------------------------------------------- 46
-  
+a) tamaño de registro = 46
+b) cantidad aproximada de filas = 40 colectivos * 3 años = 120
+c) cantidad de filas por bloque = 8192 / (46 + 2) = 171
+d) número de bloques necesarios = 120 / 171 - 51 = 1
+
+
+F_BOLETOSXLOTE
+
+* ID_LOTE NUMBER (12)        |  12+1/2  |  6
+* NRO_TIMBRADO NUMBER (12)   |  12+1/2  |  6
+* FEC_ENTREGA DATE           |   7+1/2  |  4
+* NUM_BOLETO_D NUMBER (7)    |   7+1/2  |  4
+* NUM_BOLETO_H NUMBER (7)    |   7+1/2  |  4
+  ROWID                      |       6  |  6
+
+a) tamaño de registro = 30
+/* Se dan 999 boletos a cada chofer por día, cada chofer tiene un timbrado que dura un año */
+b) cantidad aproximada de registros:  
+    999 boletos * 40 timbrados * 365 dias 3 años = 43.756.200 
+c) cantidad de filas por bloque = 8192 / (30 + 2) = 256
+d) nro de bloques necesarios = 43756200 / 256 = 170922
+e) tamaño final en bytes = 8192 * 170922 =  1.400.193.024
+
+
