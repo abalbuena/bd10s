@@ -113,3 +113,43 @@ b) cantidad aproximada de registros = 1
 c) cantidad de filas por bloque = 8192 / 22 + 2 = 342
 d) número de bloques necesarios = 1 / 342*0.9 = 1
 e) tamaño final en bytes = 8192
+
+*****************************************************
+
+G_TRAMO_POR_BARRIO 
+  
+* COD_TRAMO NUMBER (5)        |  5+1/2     | 3
+* COD_BARRIO NUMBER (5)       |  5+1/2     | 3
+* ROWID                       |      6     | 6
+
+a) tamaño de registro = 12
+b) cantidad aproximada de registro = 250; /*un tramo promedio cubre aproximadamente 25 barrios (5*25)*/
+c) cantidad de filas por bloque= 8192 / 12 + 2 = 586
+d) número de bloques necesarios = 250 / 586 * 0.9 = 1
+e) tamaño final en bytes = 8192 * 1 = 8192
+
+*********************************************************
+
+L_COCHE
+
+* NUM_COCHE NUMBER (8)       |   8+1/2   |   4
+* CHAPA VARCHAR2 (12)        |      12   |  12
+* NRO_CHASIS VARCHAR2 (30)   |      30   |  30
+* FEC_ADQUISICION DATE       |       7   |   7
+* PRECIO_COMPRA NUMBER (15)  |  15+1/2   |  
+* KILOMETRAJE NUMBER (8)     |
+* ULT_MANTENIMIENTO DATE     |
+* TIENE_SEGURO VARCHAR2 (1)  |
+* ESTADO VARCHAR2 (1)        |
+* FOTO BLOB                  |
+F * ID_MODELO NUMBER (6)     |
+F * ID_MARCA NUMBER (5)      |
+ROWID                        |
+
+a) tamaño de registro = 4080
+b) cantidad aproximada de filas = 40
+c) cantidad de filas por bloque = 3
+d) número bloques necesarios = 16
+e) tamaño final en bytes = 131072
+
+********************************************************
