@@ -81,5 +81,35 @@ F_REDONDO
   b) cantidad aproximada de registros = (2 * 40) + (40 + 40) ( 5 + 5 + 5 + 15) = 230
   c) cantidad de filas por bloque = 8192 / 141 + 2 = 58
   d) número de bloques necesarios = 230 / 58 - (0.1*58) = 4
-  e) tamaño final en bytes = 58 * 4 = 232
-  
+  e) tamaño final en bytes = 8192 * 4 = 32768
+
+*************************************************************************************
+G_MOTIVO
+* ID_MOTIVO NUMBER (5)      |  5+1/2   |   3
+* DESCRIPCION VARCHAR2 (40) |     40   |  40
+* ESTADO VARCHAR2 (1)       |      1   |   1
+  ROWID                     |      6   |   6
+
+
+a) tamaño de registro = 50
+b) cantidad aproximada de registros = 20  /*20 posibles motivos en 3 años*/
+c) cantidad de filas por bloque = 8192 / 20 + 2 = 373
+d) número de bloques necesarios = 373 / 20 - (0.1*20) = 21
+e) tamaño final en bytes = 21 * 8192 = 172032
+
+
+***********************************************************************************
+G_PARAMETROS
+
+* COSTO_PASAJ_CON NUMBER (6)    |  6+1/2  |    3
+* COSTO_PASAJ_DIF NUMBER (6)    |  6+1/2  |    3
+* CANT_RED_DIA NUMBER (4)       |  4+1/2  |    2
+* PAGO_X_REDONDO NUMBER (8)     |  8+1/2  |    4
+* PAGO_MECXHORA NUMBER (8)      |  8+1/2  |    4
+  ROWID                         |      6  |    6
+
+a) tamaño de registro = 22
+b) cantidad aproximada de registros = 1
+c) cantidad de filas por bloque = 8192 / 22 + 2 = 342
+d) número de bloques necesarios = 1 / 342*0.9 = 1
+e) tamaño final en bytes = 8192
