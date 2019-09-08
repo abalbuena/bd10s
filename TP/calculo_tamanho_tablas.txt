@@ -153,3 +153,50 @@ d) número bloques necesarios = 16
 e) tamaño final en bytes = 131072
 
 ********************************************************
+
+S_MOVIM_DET
+
+* COD_MOVIMIENTO NUMBER (10)  |    
+* NRO_ITEM NUMBER (5)         |
+* TIPO_MOVIM VARCHAR2 (1)     |
+* CANTIDAD NUMBER (8)         |
+* COSTO_UNIT NUMBER (10)      |
+* ID_REPUESTO NUMBER (8)      |
+* ID_DEPOSITO NUMBER (5)      |
+  ROWID                       |
+
+
+CANTIDAD aproximada DE REGISTROS = 
+4 NEUMATICOS 1 VEZ AL AÑO X 40 VECHICULOS * 3 añoS = 480
+40 ACEITES * 6 VECES AL AÑO * 3 AÑOS = 720
+4 AMORTIGUADORES * 40 VECHICULOS * 1 VEZ AL AÑO * 3 AÑOS = 480
+3 FILTROS * 40 VEHÍCULOS * 6 VECES AL AÑO * 3 AÑOS = 2160
+4 FRENOS * 40 VEHÍCULOS * 2 VEZ AL AÑO * 3 AÑOS = 960
+1 CORREA DE MOTOR POR VEHÍCULO * 40 VEHÍCULOS * 1 VEZ AL AÑO * 3 AÑOS = 120
+1 REFRIGERANTE * 40 VEHÍCULOS * 1 VEZ AL AÑO * 3 AÑOS = 120
+
+480 + 720 + 480 + 2160 + 960 + 120 + 120 = 5040
+
+
+************************************************
+
+S_MOVIM_REP
+
+* COD_MOVIMIENTO NUMBER (10)    |     10+1/ 
+* FEC_OPERACION DATE            |
+* USUARIO_CARGA VARCHAR2 (128)  |
+* COD_OT NUMBER (10)            |
+* NRO_ITEM NUMBER (5)           |
+* ROWID                         |
+
+CANTIDAD aproximada DE REGISTROS
+
+ 6 MANTENIMIENTOS * 1 AÑO * 40 VEHÍCULOS  * 3 AÑOS = 720
+12 REPARACIONES * 1 AÑO * 40 VEHÍCULOS * 3 AÑOS  = 1440
+TOTAL = 2160
+
+a) tamaño de registro 156
+b) cantidad aproximada de filas = 2160
+c) cantidad de filas por bloque = 52
+d) número de bloques necesarios = 47
+e) tamaño final en bytes = 385024

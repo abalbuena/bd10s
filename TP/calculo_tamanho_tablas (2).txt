@@ -1,0 +1,157 @@
+
+F_TIMBRADO
+
+* NRO_TIMBRADO NUMBER (12)    |   floor((p+1)/2) | 12+1/2  |    6   
+* FEC_AUTORIZACION DATE       |   date tiene 7   |      7  |    7 
+* VALIDO_HASTA DATE           |   date tiene 7   |      7  |    7
+* ESTABLECIMIENTO NUMBER (3)  |   floor((p+1)/2) |  3+1/2  |    2
+* EMISION NUMBER (3)          |   floor((p+1)/2) |  3+1/2  |    2
+* NRO_DESDE NUMBER (7)        |   floor((p+1)/2) |  7+1/2  |    4
+* NRO_HASTA NUMBER (7)        |   floor((p+1)/2) |  771/2  |    4
+* ULT_NUM_UTILIZADA NUMBER    |   floor((p+1)/2) |  9+1/2  |    4
+* NUM_COCHE NUMBER (8)        |   floor((p+1)/2) |  8+1/2  |    4
+  ROWID---------------------------------------------------------6
+  TOTAL------------------------------------------------------- 46
+a) tama�o de registro = 46
+b) cantidad aproximada de filas = 40 colectivos * 3 a�os = 120
+c) cantidad de filas por bloque = 8192 / (46 + 2) = 171
+d) n�mero de bloques necesarios = 120 / 171 - 51 = 1
+_______________________________________________ejemplo_______________
+_____________________
+L_MODELO 
+_____________________
+*ID_MODELO NUMBER (6)	            6	    3
+*ID_MARCA NUMBER (5)	            5	    3
+* DESCRIPCION VARCHAR2 (60)	        60	    60
+* ANHO_FABRICACION NUMBER (4)	    4	    2
+* CANT_PASA_SENT NUMBER (3)	        3	    2
+* CANT_PASA_PAR NUMBER (3)	        3	    2
+* ES_CONVENCIONAL VARCHAR2 (1)	    1	    1
+
+a)tamanho registro		79
+b)cantidad aproximada de filas	20 marcas * 10 modelos	200
+c)cantidad de filas por bloque		102
+d)numero de bloques necesarios		3
+e)tamnho en bytes		24576
+
+
+_______________________	 	 	 	 	 
+T_ACTIVIDAD	 	
+________________________
+* COD_ACTIV NUMBER (5) 
+* DESCRIPCION VARCHAR2 (500) 
+* HS_MIN_ASIGNADAS NUMBER (4,1) 
+
+a)tamanho registro		16
+b)cantidad aproximada de filas		24
+c)cantidad de filas por bloque		456
+d)numero de bloques necesarios		1
+e)tamnho en bytes		8192
+
+
+
+___________________________	 	 	 
+T_REPUESTO		
+__________________________
+* ID_REPUESTO NUMBER (8)	        8	    4   
+* NOMBRE_LARGO VARCHAR2 (100)	    100	    5
+*NOMBRE_ABREV VARCHAR2 (30)	        30	    30
+* UM VARCHAR2 (5)	                5	    5
+* ULT_COSTO_COMP NUMBER (10)	    10	    5
+
+a)tamanho registro		55
+b)cantidad aproximada de filas		20
+c)cantidad de filas por bloque		144
+d)numero de bloques necesarios		1
+e)tamnho en bytes		8192
+
+______________________________________________________			
+T_DEPOSITO			
+______________________________________________________
+* ID_DEPOSITO NUMBER (5)	    5	    3
+* DESCRIPCION VARCHAR2 (50)	    50	    50
+
+a)tamanho registro		59
+b)cantidad aproximada de filas		4
+c)cantidad de filas por bloque		135
+d)numero de bloques necesarios		1
+e)tamnho en bytes		8192
+
+
+____________________________
+S_REPXDEP 		
+____________________________
+* ID_REPUESTO NUMBER (8)	8	4
+* ID_DEPOSITO NUMBER (5)	5	3
+* CANT_ACT_STOCK NUMBER (8)	8	4
+* CANT_STK_MIN NUMBER (8)	8	4
+
+a)tamanho registro		21
+b)cantidad aproximada de filas	(20 repuestos * 4 depositos)	80
+c)cantidad de filas por bloque		357
+d)numero de bloques necesarios		1
+e)tamnho en bytes		8192
+
+
+			
+__________________________
+T_ORDEN_TRABAJO		
+____________________________
+* COD_OT NUMBER (10)	        10	    5
+* FEC_INI_PRE DATE	            7	    7
+* FEC_FIN_PRE DATE	            7	    7
+* FEC_INI_REL DATE	            7	    7
+* FEC_FIN_REL DATE	            7	    7
+* TIPO VARCHAR2 (1)	            1	    1
+* ESTADO VARCHAR2 (1)	        1	    1
+* NUM_COCHE NUMBER (8)	        8	    4
+* OBSERVACION VARCHAR2 (500)	500	    500
+
+a)tamanho registro		545
+b)cantidad aproximada de filas	40 buses(6 mant anual + 12 repar anual) * 3 anhos	2160
+c)cantidad de filas por bloque		15
+d)numero de bloques necesarios		160
+e)tamnho en bytes		1310720
+
+
+
+
+____________________________			
+T_OT_DETALLE			
+____________________________
+* COD_OT NUMBER (10)	            10	5
+* NRO_ITEM NUMBER (5)	            5	3
+* COD_ACTIV NUMBER (5)	            5	3
+* HS_INVERTIDAS NUMBER (4,1)	    4	2
+* COD_MECANICO NUMBER (8)	        8	4
+
+a)tamanho registro		23
+b)cantidad aproximada de filas	2160 OTS * 20Repuestos + 1 cierre OT	43201
+c)cantidad de filas por bloque		328
+d)numero de bloques necesarios		147
+e)tamnho en bytes		1204224
+
+	
+____________________________	
+S_MOVIM_REP
+____________________________
+* COD_MOVIMIENTO NUMBER (10) 
+* FEC_OPERACION DATE 
+* USUARIO_CARGA VARCHAR2 (128) 
+* COD_OT NUMBER (10) 
+* NRO_ITEM NUMBER (5)
+
+
+
+____________________________					
+S_MOVIM_DET					
+____________________________
+* COD_MOVIMIENTO NUMBER (10) 
+* NRO_ITEM NUMBER (5) 
+* TIPO_MOVIM VARCHAR2 (1) 
+* CANTIDAD NUMBER (8) 
+* COSTO_UNIT NUMBER (10) 
+*F ID_REPUESTO NUMBER (8) 
+*ID_DEPOSITO NUMBER (5)
+
+
